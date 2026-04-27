@@ -292,7 +292,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r('sys.symbol.save'),
                 text: $r('app.string.setting_backup_export'),
-                onClick: () => {
+                onAction: () => {
                   this.backup_is_input = true;
                   this.callFilePickerSaveFile()
                 }
@@ -303,7 +303,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r('sys.symbol.folder'),
                 text: $r('app.string.setting_backup_import'),
-                onClick: () => {
+                onAction: () => {
                   this.backup_is_input = false;
                   this.callFilePickerSelectFile()
                 }
@@ -314,7 +314,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r('sys.symbol.briefcase'),
                 text: $r('app.string.setting_migration'),
-                onClick: () => {
+                onAction: () => {
                   this.callFilePickerSaveMigrationFile()
                 }
               })
@@ -343,7 +343,7 @@ export struct SettingPage {
                   text: $r('app.string.restore_master_key_set'),
                   description:this.is_master_key_set?$r('app.string.restore_master_key_reset_desc'):$r('app.string.restore_master_key_no_set_desc'),
                   descriptionColor:this.is_master_key_set?$r('sys.color.ohos_id_color_text_secondary'):$r('app.color.token_progress_next_color_end'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.MasterKeyPage,null);
                   }, 1000)
                 })
@@ -489,7 +489,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r("sys.symbol.paintpalette"),
                 text: $r('app.string.customize_appearance'),
-                onClick: throttle(() => {
+                onAction: throttle(() => {
                   this.pageInfos.pushPathByName(ROUTE_NAMES.AppearancePage,null);
                 }, 1000)
               })
@@ -518,7 +518,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r('sys.symbol.arrow_counterclockwise_clock'),
                 text: $r('app.string.data_rdb_sync_details'),
-                onClick: throttle(() => {
+                onAction: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.ShowDataSyncDetailsPage,null);
                 }, 1000)
               })
@@ -531,7 +531,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r("sys.symbol.person_shield"),
                 text: $r('app.string.privacy_statement'),
-                onClick: throttle(() => {
+                onAction: throttle(() => {
                     const privacyUrl = AppStorage.get("AppPrivacyManageInfoUrl") as string;
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(privacyUrl, $r('app.string.privacy_statement')));
@@ -543,7 +543,7 @@ export struct SettingPage {
               SubItemButton({
                 symbol: $r("sys.symbol.doc_plaintext_and_pencil"),
                 text: $r('app.string.user_agreement'),
-                onClick: throttle(() => {
+                onAction: throttle(() => {
                   this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                     new WebPageParams('https://yylx.duan.red/user-agreement-zh-cn.html',
                       $r('app.string.user_agreement')));

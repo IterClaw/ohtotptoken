@@ -36,7 +36,7 @@ export struct FeedbackSheet {
                 SubItemButton({
                   symbol: $r("sys.symbol.doc_plaintext"),
                   text: $r('app.string.feedback_survey'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(EXTERNAL_URLS.FEEDBACK_SURVEY, $r('app.string.feedback_survey')));
                   }, 1000)
@@ -47,7 +47,7 @@ export struct FeedbackSheet {
                 SubItemButton({
                   icon: $r('app.media.github_logo'),
                   text: $r('app.string.feedback_github'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     startBrowsableAbility(this.appCtx, EXTERNAL_URLS.FEEDBACK_GITHUB);
                   }, 1000)
                 })

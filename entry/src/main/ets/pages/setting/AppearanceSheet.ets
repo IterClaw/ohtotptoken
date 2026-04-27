@@ -119,7 +119,7 @@ export struct AppearanceSheet {
                 SubItemButton({
                   symbol: $r("sys.symbol.paintpalette"),
                   text: $r('app.string.customize_appearance'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.AppearancePage, null);
                   }, 1000)
                 })

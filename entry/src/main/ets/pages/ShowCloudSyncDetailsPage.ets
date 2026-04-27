@@ -152,7 +152,7 @@ export struct ShowCloudSyncDetailsPage {
                     SubItemButton({
                       symbol: $r('sys.symbol.gearshape'),
                       text: $r('app.string.cloud_sync_open_cloud_space'),
-                      onClick: () => {
+                      onAction: () => {
                         this.startCloudSpaceSettings();
                       }
                     })
@@ -291,7 +291,7 @@ export struct ShowCloudSyncDetailsPage {
                     SubItemButton({
                       symbol: $r('sys.symbol.mobiledata'),
                       text: $r('app.string.cloud_sync_trigger_sync'),
-                      onClick: () => {
+                      onAction: () => {
                         this.triggerFileSync();
                       }
                     })
@@ -304,7 +304,7 @@ export struct ShowCloudSyncDetailsPage {
                     SubItemButton({
                       symbol: $r('sys.symbol.arrow_clockwise'),
                       text: $r('app.string.data_sync_manual'),
-                      onClick: () => {
+                      onAction: () => {
                         this.loadingText = $r('app.string.cloud_sync_backing_up');
                         this.Is_loaded = true;
                         this.triggerCloudSync();
@@ -320,7 +320,7 @@ export struct ShowCloudSyncDetailsPage {
                       symbol: $r('sys.symbol.arrow_counterclockwise_clock'),
                       text: $r('app.string.cloud_backup_history_title'),
                       description: $r('app.string.cloud_backup_history_subtitle'),
-                      onClick: () => {
+                      onAction: () => {
                         this.pageInfos?.pushPathByName(ROUTE_NAMES.ShowCloudBackupHistoryPage, null);
                       }
                     })
@@ -333,7 +333,7 @@ export struct ShowCloudSyncDetailsPage {
                     SubItemButton({
                       symbol: $r('sys.symbol.trash'),
                       text: $r('app.string.cloud_sync_clear_storage'),
-                      onClick: () => {
+                      onAction: () => {
                         this.showClearCloudStorageDialog();
                       }
                     })

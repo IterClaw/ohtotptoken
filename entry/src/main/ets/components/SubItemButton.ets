@@ -1,4 +1,4 @@
-import { LengthMetrics } from '@kit.ArkUI';
+import { ClickEvent } from '@kit.ArkUI';
 import { CommonConstants } from '../utils/CommonConstants';
 import { HdsListItemCard, PrefixIcon, IconSize, SuffixArrow } from '@kit.UIDesignKit';
 
@@ -10,7 +10,7 @@ export struct SubItemButton {
   @Require @Param text: ResourceStr | string = 'TEST';
   @Param description: string | Resource = '';
   @Param descriptionColor: ResourceColor = $r('sys.color.ohos_id_color_text_secondary');
-  @Event onClick: () => void = () => {};
+  @Event onAction: (event?: ClickEvent) => void = () => {};
 
   build() {
     HdsListItemCard({
@@ -24,11 +24,11 @@ export struct SubItemButton {
       }),
       textItem: {
         primaryText: { text: this.text },
-        secondaryText: this.description != '' ? { text: this.description, fontColor: this.descriptionColor } : undefined
+        secondaryText: this.description != '' ? { text: this.description } : undefined
       },
       suffixItem: new SuffixArrow({}),
       onClick: () => {
-        this.onClick();
+        this.onAction();
       }
     })
   }

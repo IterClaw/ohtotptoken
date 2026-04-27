@@ -75,7 +75,7 @@ export struct SecuritySheet {
                 text: $r('app.string.restore_master_key_set'),
                 description:this.is_master_key_set?$r('app.string.restore_master_key_reset_desc'):$r('app.string.restore_master_key_no_set_desc'),
                 descriptionColor:this.is_master_key_set?$r('sys.color.ohos_id_color_text_secondary'):$r('app.color.token_progress_next_color_end'),
-                onClick: () => {
+                onAction: () => {
                   this.pageInfos.pushPathByName(ROUTE_NAMES.MasterKeyPage, null);
                 }
               })

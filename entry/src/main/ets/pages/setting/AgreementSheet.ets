@@ -34,7 +34,7 @@ export struct AgreementSheet {
                 SubItemButton({
                   symbol: $r("sys.symbol.person_shield"),
                   text: $r('app.string.privacy_statement'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     const privacyUrl = AppStorage.get("AppPrivacyManageInfoUrl") as string;
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(privacyUrl, $r('app.string.privacy_statement')));
@@ -46,7 +46,7 @@ export struct AgreementSheet {
                 SubItemButton({
                   symbol: $r("sys.symbol.doc_plaintext_and_pencil"),
                   text: $r('app.string.user_agreement'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams('https://yylx.duan.red/user-agreement-zh-cn.html',
                         $r('app.string.user_agreement')));

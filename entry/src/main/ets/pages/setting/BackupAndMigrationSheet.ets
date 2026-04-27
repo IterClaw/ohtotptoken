@@ -238,7 +238,7 @@ export struct BackupAndMigrationSheet {
                 SubItemButton({
                   symbol: $r('sys.symbol.save'),
                   text: $r('app.string.setting_backup_export'),
-                  onClick: () => {
+                  onAction: () => {
                     this.backup_is_input = true;
                     this.callFilePickerSaveFile()
                   }
@@ -249,7 +249,7 @@ export struct BackupAndMigrationSheet {
                 SubItemButton({
                   symbol: $r('sys.symbol.folder'),
                   text: $r('app.string.setting_backup_import'),
-                  onClick: () => {
+                  onAction: () => {
                     this.backup_is_input = false;
                     this.callFilePickerSelectFile()
                   }
@@ -260,7 +260,7 @@ export struct BackupAndMigrationSheet {
                 SubItemButton({
                   symbol: $r('sys.symbol.briefcase'),
                   text: $r('app.string.setting_migration'),
-                  onClick: () => {
+                  onAction: () => {
                     this.callFilePickerSaveMigrationFile()
                   }
                 })
@@ -299,7 +299,7 @@ export struct BackupAndMigrationSheet {
                   text: $r('app.string.data_huawei_cloud_sync_details'),
                   description: this.isHuaweiLoggedIn ? '' : $r('app.string.cloud_backup_login_required'),
                   descriptionColor: $r('sys.color.ohos_id_color_warning'),
-                  onClick: throttle(() => {
+                  onAction: throttle(() => {
                     if (!this.isHuaweiLoggedIn) {
                       this.showHuaweiAccountRequiredDialog();
                       return;

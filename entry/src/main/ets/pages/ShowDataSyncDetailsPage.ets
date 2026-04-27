@@ -118,7 +118,7 @@ export struct ShowDataSyncDetailsPage {
                     SubItemButton({
                       symbol: $r('sys.symbol.arrow_clockwise'),
                       text: $r('app.string.data_sync_manual'),
-                      onClick: () => {
+                      onAction: () => {
                         this.Is_loaded=true;
                         TokenStore.getInstance().DataSync().then(()=>{
                           setTimeout(() => {
