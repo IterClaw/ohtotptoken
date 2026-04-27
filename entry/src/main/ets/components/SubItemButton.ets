@@ -10,7 +10,7 @@ export struct SubItemButton {
   @Require @Param text: ResourceStr | string = 'TEST';
   @Param description: string | Resource = '';
   @Param descriptionColor: ResourceColor = $r('sys.color.ohos_id_color_text_secondary');
-  @Event onAction: (event?: ClickEvent) => void = () => {};
+  @Event onAction: (event: ClickEvent) => void = () => {};
 
   build() {
     HdsListItemCard({
