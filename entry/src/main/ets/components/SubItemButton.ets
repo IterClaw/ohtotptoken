@@ -27,8 +27,8 @@ export struct SubItemButton {
         secondaryText: this.description != '' ? { text: this.description } : undefined
       },
       suffixItem: new SuffixArrow({}),
-      onClick: () => {
-        this.onAction();
+      onClick: (event: ClickEvent) => {
+        this.onAction(event);
       }
     })
   }
