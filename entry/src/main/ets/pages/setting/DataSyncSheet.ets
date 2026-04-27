@@ -73,11 +73,11 @@ export struct DataSyncSheet {
 
                 SubItemButton({
                   symbol: $r('sys.symbol.arrow_counterclockwise_clock'),
-                  text: $r('app.string.data_rdb_sync_details')
-                })
-                  .onClick(throttle((event) => {
+                  text: $r('app.string.data_rdb_sync_details'),
+                  onClick: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.ShowDataSyncDetailsPage, null);
-                  }, 1000))
+                  }, 1000)
+                })
               }
             }
             .padding({ left: 10, right: 10 })

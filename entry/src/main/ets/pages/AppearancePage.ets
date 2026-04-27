@@ -469,10 +469,10 @@ export struct AppearancePage {
                 SubItemButton({
                   symbol: $r('sys.symbol.arrow_counterclockwise'),
                   text: $r('app.string.appearance_reset_to_default'),
-                })
-                  .onClick(() => {
+                  onClick: () => {
                     AppPreference.resetAppearanceToDefault();
-                  })
+                  }
+                })
               }
             }
             .padding({ left: 10, right: 10 })

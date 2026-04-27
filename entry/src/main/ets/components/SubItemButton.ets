@@ -1,4 +1,6 @@
 import { LengthMetrics } from '@kit.ArkUI';
+import { CommonConstants } from '../utils/CommonConstants';
+import { HdsListItemCard, PrefixIcon, IconSize, SuffixArrow } from '@kit.UIDesignKit';
 
 @Preview
 @ComponentV2
@@ -6,52 +8,28 @@ export struct SubItemButton {
   @Param symbol: Resource | undefined = $r('sys.symbol.tip_fit_test');
   @Param icon: Resource | undefined = undefined;
   @Require @Param text: ResourceStr | string = 'TEST';
-  @Param description: string  | Resource = '';
+  @Param description: string | Resource = '';
   @Param descriptionColor: ResourceColor = $r('sys.color.ohos_id_color_text_secondary');
+  @Event onClick: () => void = () => {};
 
   build() {
-    Column() {
-      Row({ space: 10 }) {
-        if (this.icon !== undefined) {
-          Image(this.icon)
-            .width(LengthMetrics.vp(20).value)
-            .height(LengthMetrics.vp(20).value)
-            .fillColor($r('app.color.str_main'))
-        } else {
-          SymbolGlyph(this.symbol)
-            .fontSize(LengthMetrics.vp(20).value)
-            .fontWeight(FontWeight.Medium)
-            .fontColor([$r('app.color.str_main')])
-        }
-        Column({ space: 4 }) {
-          Text(this.text)
-            .fontSize($r('sys.float.ohos_id_text_size_body1'))
-            .fontColor($r('sys.color.ohos_id_color_text_primary'))
-            .fontWeight(FontWeight.Regular)
-            .textAlign(TextAlign.Start)
-            .maxLines(1)
-            .textOverflow({ overflow: TextOverflow.Ellipsis })
-          if (this.description != '') {
-            Text(this.description)
-              .fontSize($r('sys.float.ohos_id_text_size_body2'))
-              .fontColor(this.descriptionColor)
-              .fontWeight(FontWeight.Regular)
-              .fontFamily('HarmonyHeiTi')
-              .lineHeight(19)
-              .textAlign(TextAlign.Start)
-              .maxLines(2)
-              .textOverflow({ overflow: TextOverflow.Ellipsis })
-          }
-        }
-        .layoutWeight(1)
-        .alignItems(HorizontalAlign.Start)
+    HdsListItemCard({
+      cardPrefixMargin: $r('sys.float.padding_level2'),
+      cardSuffixMargin: $r('sys.float.padding_level2'),
+      cardBackgroundColor: $r('app.color.item_bg'),
+      cardHeight: CommonConstants.SETTING_OPTION_CARD_HEIGHT,
+      prefixItem: new PrefixIcon({
+        iconSize: IconSize.SYSTEM_ICON,
+        iconValue: this.icon !== undefined ? { symbol: this.icon } : { symbol: this.symbol! }
+      }),
+      textItem: {
+        primaryText: { text: this.text },
+        secondaryText: this.description != '' ? { text: this.description, fontColor: this.descriptionColor } : undefined
+      },
+      suffixItem: new SuffixArrow({}),
+      onClick: () => {
+        this.onClick();
       }
-      .width('100%')
-      .alignItems(VerticalAlign.Center)
-      .justifyContent(FlexAlign.Start)
-    }
-    .clickEffect({ level: ClickEffectLevel.LIGHT, scale: 0.95 })
-    .padding(10)
-
+    })
   }
 }

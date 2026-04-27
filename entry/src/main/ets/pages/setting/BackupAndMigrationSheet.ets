@@ -237,33 +237,33 @@ export struct BackupAndMigrationSheet {
               SettingItem({ title: "" }) {
                 SubItemButton({
                   symbol: $r('sys.symbol.save'),
-                  text: $r('app.string.setting_backup_export')
-                })
-                  .onClick(() => {
+                  text: $r('app.string.setting_backup_export'),
+                  onClick: () => {
                     this.backup_is_input = true;
                     this.callFilePickerSaveFile()
-                  })
+                  }
+                })
 
                 SubItemDivider()
 
                 SubItemButton({
                   symbol: $r('sys.symbol.folder'),
-                  text: $r('app.string.setting_backup_import')
-                })
-                  .onClick(() => {
+                  text: $r('app.string.setting_backup_import'),
+                  onClick: () => {
                     this.backup_is_input = false;
                     this.callFilePickerSelectFile()
-                  })
+                  }
+                })
 
                 SubItemDivider()
 
                 SubItemButton({
                   symbol: $r('sys.symbol.briefcase'),
-                  text: $r('app.string.setting_migration')
-                })
-                  .onClick(() => {
+                  text: $r('app.string.setting_migration'),
+                  onClick: () => {
                     this.callFilePickerSaveMigrationFile()
-                  })
+                  }
+                })
               }
             }
             .padding({ left: 10, right: 10 })
@@ -299,14 +299,14 @@ export struct BackupAndMigrationSheet {
                   text: $r('app.string.data_huawei_cloud_sync_details'),
                   description: this.isHuaweiLoggedIn ? '' : $r('app.string.cloud_backup_login_required'),
                   descriptionColor: $r('sys.color.ohos_id_color_warning'),
-                })
-                  .onClick(throttle((event) => {
+                  onClick: throttle(() => {
                     if (!this.isHuaweiLoggedIn) {
                       this.showHuaweiAccountRequiredDialog();
                       return;
                     }
                     this.pageInfos.pushPathByName(ROUTE_NAMES.ShowCloudSyncDetailsPage, null);
-                  }, 1000))
+                  }, 1000)
+                })
               }
             }
             .padding({ left: 10, right: 10 })

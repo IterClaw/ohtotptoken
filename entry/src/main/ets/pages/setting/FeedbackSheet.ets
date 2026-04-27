@@ -35,22 +35,22 @@ export struct FeedbackSheet {
               SettingItem({ title: "" }) {
                 SubItemButton({
                   symbol: $r("sys.symbol.doc_plaintext"),
-                  text: $r('app.string.feedback_survey')
-                })
-                  .onClick(throttle((event) => {
+                  text: $r('app.string.feedback_survey'),
+                  onClick: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(EXTERNAL_URLS.FEEDBACK_SURVEY, $r('app.string.feedback_survey')));
-                  }, 1000))
+                  }, 1000)
+                })
 
                 SubItemDivider()
 
                 SubItemButton({
                   icon: $r('app.media.github_logo'),
-                  text: $r('app.string.feedback_github')
-                })
-                  .onClick(throttle((event) => {
+                  text: $r('app.string.feedback_github'),
+                  onClick: throttle(() => {
                     startBrowsableAbility(this.appCtx, EXTERNAL_URLS.FEEDBACK_GITHUB);
-                  }, 1000))
+                  }, 1000)
+                })
                 //
                 // SubItemDivider()
                 //

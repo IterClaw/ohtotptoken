@@ -117,9 +117,8 @@ export struct ShowDataSyncDetailsPage {
 
                     SubItemButton({
                       symbol: $r('sys.symbol.arrow_clockwise'),
-                      text: $r('app.string.data_sync_manual')
-                    })
-                      .onClick(() => {
+                      text: $r('app.string.data_sync_manual'),
+                      onClick: () => {
                         this.Is_loaded=true;
                         TokenStore.getInstance().DataSync().then(()=>{
                           setTimeout(() => {
@@ -129,7 +128,8 @@ export struct ShowDataSyncDetailsPage {
                             this.AppDbKVArchiveTime = AppPreference.getPreference(PREF_KEYS.DB_KV_ARCHIVE_TIME);
                           }, 1500);
                         });
-                      })
+                      }
+                    })
                   }
                 }
                 .padding({ left: 10, right: 10 })

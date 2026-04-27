@@ -291,33 +291,33 @@ export struct SettingPage {
             SettingItem({ title: $r('app.string.setting_backup') }) {
               SubItemButton({
                 symbol: $r('sys.symbol.save'),
-                text: $r('app.string.setting_backup_export')
-              })
-                .onClick(() => {
+                text: $r('app.string.setting_backup_export'),
+                onClick: () => {
                   this.backup_is_input = true;
                   this.callFilePickerSaveFile()
-                })
+                }
+              })
 
               SubItemDivider()
 
               SubItemButton({
                 symbol: $r('sys.symbol.folder'),
-                text: $r('app.string.setting_backup_import')
-              })
-                .onClick(() => {
+                text: $r('app.string.setting_backup_import'),
+                onClick: () => {
                   this.backup_is_input = false;
                   this.callFilePickerSelectFile()
-                })
+                }
+              })
 
               SubItemDivider()
 
               SubItemButton({
                 symbol: $r('sys.symbol.briefcase'),
-                text: $r('app.string.setting_migration')
-              })
-                .onClick(() => {
+                text: $r('app.string.setting_migration'),
+                onClick: () => {
                   this.callFilePickerSaveMigrationFile()
-                })
+                }
+              })
             }
           }
           .padding({ left: 10, right: 10 })
@@ -342,11 +342,11 @@ export struct SettingPage {
                   symbol: $r('sys.symbol.key_shield'),
                   text: $r('app.string.restore_master_key_set'),
                   description:this.is_master_key_set?$r('app.string.restore_master_key_reset_desc'):$r('app.string.restore_master_key_no_set_desc'),
-                  descriptionColor:this.is_master_key_set?$r('sys.color.ohos_id_color_text_secondary'):$r('app.color.token_progress_next_color_end')
-                })
-                  .onClick(throttle((event) => {
+                  descriptionColor:this.is_master_key_set?$r('sys.color.ohos_id_color_text_secondary'):$r('app.color.token_progress_next_color_end'),
+                  onClick: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.MasterKeyPage,null);
-                  }, 1000))
+                  }, 1000)
+                })
               }
 
               SubItemDivider()
@@ -488,11 +488,11 @@ export struct SettingPage {
 
               SubItemButton({
                 symbol: $r("sys.symbol.paintpalette"),
-                text: $r('app.string.customize_appearance')
-              })
-                .onClick(throttle((event) => {
+                text: $r('app.string.customize_appearance'),
+                onClick: throttle(() => {
                   this.pageInfos.pushPathByName(ROUTE_NAMES.AppearancePage,null);
-                }, 1000))
+                }, 1000)
+              })
             }
           }
           .padding({ left: 10, right: 10 })
@@ -517,35 +517,38 @@ export struct SettingPage {
 
               SubItemButton({
                 symbol: $r('sys.symbol.arrow_counterclockwise_clock'),
-                text: $r('app.string.data_rdb_sync_details')
-              })
-                .onClick(throttle((event) => {
+                text: $r('app.string.data_rdb_sync_details'),
+                onClick: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.ShowDataSyncDetailsPage,null);
-                }, 1000))
+                }, 1000)
+              })
             }
           }
           .padding({ left: 10, right: 10 })
 
           ListItem() {
             SettingItem({ title: $r('app.string.setting_agreement_statement') }) {
-              SubItemButton({ symbol: $r("sys.symbol.person_shield"), text: $r('app.string.privacy_statement') })
-                .onClick(throttle((event) => {
+              SubItemButton({
+                symbol: $r("sys.symbol.person_shield"),
+                text: $r('app.string.privacy_statement'),
+                onClick: throttle(() => {
                     const privacyUrl = AppStorage.get("AppPrivacyManageInfoUrl") as string;
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(privacyUrl, $r('app.string.privacy_statement')));
-                }, 1000))
+                }, 1000)
+              })
 
               SubItemDivider()
 
               SubItemButton({
                 symbol: $r("sys.symbol.doc_plaintext_and_pencil"),
-                text: $r('app.string.user_agreement')
-              })
-                .onClick(throttle((event) => {
+                text: $r('app.string.user_agreement'),
+                onClick: throttle(() => {
                   this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                     new WebPageParams('https://yylx.duan.red/user-agreement-zh-cn.html',
                       $r('app.string.user_agreement')));
-                }, 1000))
+                }, 1000)
+              })
 
             }
           }

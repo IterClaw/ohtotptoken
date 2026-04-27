@@ -31,24 +31,27 @@ export struct AgreementSheet {
 
             ListItem() {
               SettingItem({ title: "" }) {
-                SubItemButton({ symbol: $r("sys.symbol.person_shield"), text: $r('app.string.privacy_statement') })
-                  .onClick(throttle((event) => {
+                SubItemButton({
+                  symbol: $r("sys.symbol.person_shield"),
+                  text: $r('app.string.privacy_statement'),
+                  onClick: throttle(() => {
                     const privacyUrl = AppStorage.get("AppPrivacyManageInfoUrl") as string;
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams(privacyUrl, $r('app.string.privacy_statement')));
-                  }, 1000))
+                  }, 1000)
+                })
 
                 SubItemDivider()
 
                 SubItemButton({
                   symbol: $r("sys.symbol.doc_plaintext_and_pencil"),
-                  text: $r('app.string.user_agreement')
-                })
-                  .onClick(throttle((event) => {
+                  text: $r('app.string.user_agreement'),
+                  onClick: throttle(() => {
                     this.pageInfos.pushPathByName(ROUTE_NAMES.WebPage,
                       new WebPageParams('https://yylx.duan.red/user-agreement-zh-cn.html',
                         $r('app.string.user_agreement')));
-                  }, 1000))
+                  }, 1000)
+                })
 
               }
             }
